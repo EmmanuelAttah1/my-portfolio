@@ -20,7 +20,7 @@ const Tool=props=>{
           <div className='popup-tool'>{name}</div>
         :
         <div className='tool'>
-          {/* <div className='tool-logo' /> */}
+          <div className='tool-logo' />
           <div className='tool-name'>{name}</div>
         </div>
       }
@@ -246,3 +246,98 @@ I am also a technical writer. You can find me on Medium, where I write about dev
 }
 
 export default App;
+
+
+// import * as React from "react";
+// import { useRef } from "react";
+// import { motion, sync, useCycle } from "framer-motion";
+// import { useDimensions } from "./use-dimensions";
+// import { MenuToggle } from "./MenuToggle";
+// import { Navigation } from "./Navigation";
+
+// import './App.css'
+
+// const sidebar = {
+//   open: (height = 1000) => ({
+//     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+//     transition: {
+//       type: "spring",
+//       stiffness: 20,
+//       restDelta: 2
+//     }
+//   }),
+//   closed: {
+//     clipPath: "circle(30px at 40px 40px)",
+//     transition: {
+//       delay: 0.5,
+//       type: "spring",
+//       stiffness: 400,
+//       damping: 40
+//     }
+//   }
+// };
+
+// export const Example = () => {
+//   const [isOpen, toggleOpen] = useCycle(false, true);
+//   const containerRef = useRef(null);
+//   const { height } = useDimensions(containerRef);
+
+//   return (
+//     <motion.nav
+//       initial={false}
+//       animate={isOpen ? "open" : "closed"}
+//       custom={height}
+//       ref={containerRef}
+//     >
+//       <motion.div className="background" variants={sidebar} />
+//       <Navigation />
+//       <MenuToggle toggle={() => toggleOpen()} />
+//     </motion.nav>
+//   );
+// };
+
+// export default Example
+
+
+// const links = [
+//   { name: "Home", to: "#", id: 1 },
+//   { name: "About", to: "#", id: 2 },
+//   { name: "Blog", to: "#", id: 3 },
+//   { name: "Contact", to: "#", id: 4 }
+// ];
+
+
+// const sideVariants = {
+//   closed: {
+//     transition: {
+//       staggerChildren: 0.2,
+//       staggerDirection: -1
+//     }
+//   },
+//   open: {
+//     transition: {
+//       staggerChildren: 0.2,
+//       staggerDirection: 1
+//     }
+//   }
+// };
+
+
+// export default function App() {
+//   return (
+//     <motion.aside initial={{ width: 0 }} animate={{ width: 300 }}>
+//   <motion.div 
+//     className="container"
+//     initial="closed"
+//     animate="open"
+//     variants={sideVariants}
+//   >
+//     {links.map(({ name, to, id }) => (
+//       <motion.a key={id} href={to}>
+//         {name}
+//       </motion.a>
+//     ))}
+//   </motion.div>
+// </motion.aside>
+//   );
+// }
