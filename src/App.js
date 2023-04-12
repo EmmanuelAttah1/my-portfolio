@@ -1,5 +1,5 @@
 import './App.css';
-import {TwitterOutlined,GithubOutlined,LinkedinOutlined,MediumOutlined,ArrowLeftOutlined,ArrowDownOutlined,MenuOutlined} from "@ant-design/icons"
+import {TwitterOutlined,GithubOutlined,LinkedinOutlined,MediumOutlined,ArrowLeftOutlined,ArrowDownOutlined,MenuOutlined,CloseOutlined} from "@ant-design/icons"
 import { Button } from 'antd';
 
 import attahzu from "./images/projects/attahzu.png"
@@ -52,6 +52,12 @@ const Project=props=>{
 function App() {
   const [popupOpen,setpopUpState] = useState(null)
   const [stack,updateStack] = useState([])
+  const [sliderOpen,setSliderState] = useState(false)
+
+
+  const toggleSlider=()=>{
+    setSliderState(!sliderOpen)
+  }
 
   
   const openPopUp=(page,data=null)=>{
@@ -83,6 +89,13 @@ function App() {
     {name:"Sheet Music Africa",tag:"e-commerce",image:attahzu,id:1},
     {name:"The boys",tag:"e-commerce",image:tbs,id:2},
     {name:"Attahzu Farm",tag:"Informational website",image:attahzu,id:3},
+  ]
+
+  const sliderChildren = [
+    {name:"About Me", link:"#about-me"},
+    {name:"My Work", link:"#my-work"},
+    {name:"My Stack", link:"#my-stack"},
+    {name:"Get In Touch", link:"#contact"},
   ]
 
   return (
@@ -124,7 +137,7 @@ I am also a technical writer. You can find me on Medium, where I write about dev
           </div>
         </div>
 
-        <div id="small-menu"><MenuOutlined  style={{fontSize:'24px'}}/></div>
+        <div id="small-menu" onClick={toggleSlider} ><MenuOutlined  style={{fontSize:'24px'}}/></div>
         <div id="scroll-down">
           <div id="scroll-down-icon">
           <ArrowDownOutlined style={{fontSize:"20px",color:'#ffffff'}}/>
@@ -241,6 +254,16 @@ I am also a technical writer. You can find me on Medium, where I write about dev
           </div>
         </div>
       }
+      <div id="slider" style={{transform:sliderOpen?"translateX(0px)":"translateX(100%)"}}>
+        <div id="slider-close" onClick={toggleSlider}>
+          <CloseOutlined style={{fontSize:"24px"}}/>
+        </div>
+        <div id="slider-content">
+          {sliderChildren.map((e,index)=>(
+            <div key={"slider_"+index} className='slider-child'>{e.name}</div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
